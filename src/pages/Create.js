@@ -1,5 +1,15 @@
 import React from "react";
-import { TextField, Typography, Button, Container } from "@mui/material";
+import {
+  TextField,
+  Typography,
+  Button,
+  Container,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+  FormControl,
+  FormLabel,
+} from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { makeStyles } from "@mui/styles";
 import { useState } from "react";
@@ -20,6 +30,7 @@ export default function Create() {
   const [details, setDetails] = useState("");
   const [titleError, setTitleError] = useState(false);
   const [detailsError, setDetailsError] = useState(false);
+  const [category, setCategory] = useState("todos");
 
   // execute function on submit
   const handleSubmit = (e) => {
@@ -34,7 +45,7 @@ export default function Create() {
       setDetailsError(true);
     }
     if (title && details) {
-      console.log(title, details);
+      console.log(title, details, category);
     }
   };
 
@@ -73,6 +84,36 @@ export default function Create() {
           rows={4}
           error={detailsError}
         />
+
+        <FormControl className={classes.field}>
+          <FormLabel>Note Category</FormLabel>
+          <RadioGroup
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <FormControlLabel
+              value="money"
+              control={<Radio color="secondary" />}
+              label="Money"
+            />
+            <FormControlLabel
+              value="todos"
+              control={<Radio color="secondary" />}
+              label="Todos"
+            />
+            <FormControlLabel
+              value="reminders"
+              control={<Radio color="secondary" />}
+              label="Reminders"
+            />
+            <FormControlLabel
+              value="work"
+              control={<Radio color="secondary" />}
+              label="Work"
+            />
+          </RadioGroup>
+        </FormControl>
+
         <Button
           className={classes.btn}
           type="submit"
