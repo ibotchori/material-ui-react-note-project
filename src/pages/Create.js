@@ -7,17 +7,7 @@ import { makeStyles } from "@mui/styles";
 
 // custom styles
 const useStyles = makeStyles({
-  btn: {
-    backgroundColor: "violet",
-    fontSize: 60,
-    "&:hover": {
-      backgroundColor: "blue",
-    },
-  },
-  title: {
-    textDecoration: "underline",
-    marginBottom: 20,
-  },
+
 });
 
 export default function Create() {
@@ -31,7 +21,7 @@ export default function Create() {
         component="h2"
         gutterBottom // add some margin on bottom
       >
-        Create a new note
+        Create a New Note
       </Typography>
 
       <Button
