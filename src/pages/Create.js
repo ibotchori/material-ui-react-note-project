@@ -13,6 +13,7 @@ import {
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { makeStyles } from "@mui/styles";
 import { useState } from "react";
+import { useHistory } from "react-router";
 
 // custom styles
 const useStyles = makeStyles({
@@ -25,6 +26,7 @@ const useStyles = makeStyles({
 });
 
 export default function Create() {
+  const history = useHistory()
   const classes = useStyles(); // call custom styles
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
@@ -45,7 +47,12 @@ export default function Create() {
       setDetailsError(true);
     }
     if (title && details) {
-      console.log(title, details, category);
+      // send data to the server
+      fetch('http://localhost:8000/notes', {
+        method: 'POST', 
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify({title, details, category})
+      }).then(() => history.push('/'))
     }
   };
 
