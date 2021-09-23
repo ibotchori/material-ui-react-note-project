@@ -11,23 +11,29 @@ import { useHistory, useLocation } from "react-router";
 const drawerWidth = 240;
 
 // custom styles
-const useStyles = makeStyles({
-  page: {
-    background: "#f9f9f9",
-    with: "100%",
-  },
-  drawer: {
-    width: drawerWidth,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  root: {
-    display: "flex",
-  },
-  active: {
-    background: "#f4f4f4",
-  },
+const useStyles = makeStyles((theme) => {
+  return {
+    page: {
+      background: "#f9f9f9",
+      with: "100%",
+      padding: theme.spacing(3), // base spacing = 8 px. 8 * 3 = 24 px
+    },
+    drawer: {
+      width: drawerWidth,
+    },
+    drawerPaper: {
+      width: drawerWidth,
+    },
+    root: {
+      display: "flex",
+    },
+    active: {
+      background: "#f4f4f4",
+    },
+    title: {
+      padding: theme.spacing(2), // base spacing = 8 px. 8 * 2 = 16 px
+    },
+  };
 });
 
 // children props needs to show children of this component
@@ -64,7 +70,9 @@ export default function Layout({ children }) {
         classes={{ paper: classes.drawerPaper }} // classes override the css of the classes inside the drawer component built into it by material UI
       >
         <div>
-          <Typography variant="h5">My Notes</Typography>
+          <Typography className={classes.title} variant="h5">
+            Notes Page
+          </Typography>
         </div>
 
         {/* list / links */}
