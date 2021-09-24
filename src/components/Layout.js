@@ -1,4 +1,4 @@
-import { Drawer, Typography } from "@mui/material";
+import { Avatar, Drawer, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React from "react";
 import List from "@mui/material/List";
@@ -43,6 +43,9 @@ const useStyles = makeStyles((theme) => {
     toolbar: theme.mixins.toolbar,
     date: {
       flexGow: 1
+    },
+    avatar: {
+      marginLeft: theme.spacing(2)
     }
   };
 });
@@ -86,6 +89,7 @@ export default function Layout({ children }) {
             {/* format date by date-fns npm*/}
           </Typography>
           <Typography>Mario</Typography>
+          <Avatar className={classes.avatar} src="https://media.wired.com/photos/5926c126af95806129f50868/master/w_1334,c_limit/SuperMarioRunTA.jpg"/>
         </Toolbar>
       </AppBar>
 
