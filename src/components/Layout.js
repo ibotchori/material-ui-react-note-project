@@ -7,6 +7,9 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { AddCircleOutline, SubjectOutlined } from "@mui/icons-material";
 import { useHistory, useLocation } from "react-router";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import { format } from "date-fns"; // date formatter
 
 const drawerWidth = 240;
 
@@ -33,6 +36,14 @@ const useStyles = makeStyles((theme) => {
     title: {
       padding: theme.spacing(2), // base spacing = 8 px. 8 * 2 = 16 px
     },
+    appBar: { // calculate width
+      width: `calc(100% - ${drawerWidth}px)`,
+    },
+    // mixing is a collection of styles used by MUI component. it get the ToolBar component classes included the height, and it drop the content by that hight
+    toolbar: theme.mixins.toolbar,
+    date: {
+      flexGow: 1
+    }
   };
 });
 
@@ -61,6 +72,22 @@ export default function Layout({ children }) {
   return (
     <div className={classes.root}>
       {/* app bar */}
+      <AppBar
+        elevation="0"
+        className={classes.appBar}
+        style={{ width: `calc(100% - ${drawerWidth}px)` }} // set inline styles, because {classes.appBar} did not work
+      >
+        <Toolbar>
+          <Typography 
+          className={classes.date}
+          style={{flexGrow: "1"}} // set inline styles, because {classes.date} did not work
+          >
+            Today is the {format(new Date(), "do MMMM Y")}{" "}
+            {/* format date by date-fns npm*/}
+          </Typography>
+          <Typography>Mario</Typography>
+        </Toolbar>
+      </AppBar>
 
       {/* side drawer */}
       <Drawer
@@ -91,7 +118,10 @@ export default function Layout({ children }) {
         </List>
       </Drawer>
 
-      <div className={classes.page}>{children}</div>
+      <div className={classes.page}>
+        <div className={classes.toolbar}></div>
+        {children}
+      </div>
     </div>
   );
 }
