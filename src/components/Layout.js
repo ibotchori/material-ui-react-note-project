@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => {
     page: {
       background: "#f9f9f9",
       with: "100%",
-      padding: theme.spacing(3), // base spacing = 8 px. 8 * 3 = 24 px
+      // padding: theme.spacing(3), // base spacing = 8 px. 8 * 3 = 24 px
+      padding: "24px", 
     },
     drawer: {
       width: drawerWidth,
@@ -34,19 +35,25 @@ const useStyles = makeStyles((theme) => {
       background: "#f4f4f4",
     },
     title: {
-      padding: theme.spacing(2), // base spacing = 8 px. 8 * 2 = 16 px
+      // padding: theme.spacing(2), // base spacing = 8 px. 8 * 2 = 16 px
+      padding: "16px",
     },
-    appBar: { // calculate width
+    appBar: {
+      // calculate width
       width: `calc(100% - ${drawerWidth}px)`,
     },
     // mixing is a collection of styles used by MUI component. it get the ToolBar component classes included the height, and it drop the content by that hight
-    toolbar: theme.mixins.toolbar,
+    //  toolbar: theme.mixins.toolbar,
+    toolbar: {
+      height: "84px",
+    },
     date: {
-      flexGow: 1
+      flexGow: 1,
     },
     avatar: {
-      marginLeft: theme.spacing(2)
-    }
+      //  marginLeft: theme.spacing(2)
+      marginLeft: "16px",
+    },
   };
 });
 
@@ -81,15 +88,18 @@ export default function Layout({ children }) {
         style={{ width: `calc(100% - ${drawerWidth}px)` }} // set inline styles, because {classes.appBar} did not work
       >
         <Toolbar>
-          <Typography 
-          className={classes.date}
-          style={{flexGrow: "1"}} // set inline styles, because {classes.date} did not work
+          <Typography
+            className={classes.date}
+            style={{ flexGrow: "1" }} // set inline styles, because {classes.date} did not work
           >
             Today is the {format(new Date(), "do MMMM Y")}{" "}
             {/* format date by date-fns npm*/}
           </Typography>
           <Typography>Mario</Typography>
-          <Avatar className={classes.avatar} src="https://media.wired.com/photos/5926c126af95806129f50868/master/w_1334,c_limit/SuperMarioRunTA.jpg"/>
+          <Avatar
+            className={classes.avatar}
+            src="https://media.wired.com/photos/5926c126af95806129f50868/master/w_1334,c_limit/SuperMarioRunTA.jpg"
+          />
         </Toolbar>
       </AppBar>
 
