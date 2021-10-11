@@ -6,6 +6,8 @@ import { purple } from '@mui/material/colors';
 import Layout from './components/Layout';
 
 
+// run json server first: json-server --watch data/db.json --port 8000 
+
 
 const theme = createTheme({
   palette: {
