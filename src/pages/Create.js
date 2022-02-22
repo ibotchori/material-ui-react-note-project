@@ -25,8 +25,8 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Create() {
-  const history = useHistory()
+export default function Create({ setNotes }) {
+  const history = useHistory();
   const classes = useStyles(); // call custom styles
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
@@ -47,12 +47,20 @@ export default function Create() {
       setDetailsError(true);
     }
     if (title && details) {
-      // send data to the server
-      fetch('http://localhost:8000/notes', {
-        method: 'POST', 
-        headers: {"Content-type": "application/json"},
-        body: JSON.stringify({title, details, category})
-      }).then(() => history.push('/'))
+      //   // send data to the server
+      //   fetch('http://localhost:8000/notes', {
+      //     method: 'POST',
+      //     headers: {"Content-type": "application/json"},
+      //     body: JSON.stringify({title, details, category})
+      //   }).then(() => history.push('/'))
+      // }
+      const newNote = {
+        title,
+        details,
+        category,
+      };
+      setNotes((oldArray) => [...oldArray, newNote]);
+      history.push("/");
     }
   };
 
