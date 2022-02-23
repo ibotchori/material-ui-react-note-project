@@ -29,8 +29,7 @@ export default function Notes({ notes, setNotes }) {
   // media query
   const breakpointColumnsObj = {
     default: 3,
-    1100: 2,
-    700: 1,
+    1100: 1,
   };
 
   return (
