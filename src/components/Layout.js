@@ -108,10 +108,10 @@ export default function Layout({ children }) {
             Today is the {format(new Date(), "do MMMM Y")}{" "}
             {/* format date by date-fns npm*/}
           </Typography>
-          <Typography>Mario</Typography>
+          <Typography>Thomas</Typography>
           <Avatar
             className={classes.avatar}
-            src="https://media.wired.com/photos/5926c126af95806129f50868/master/w_1334,c_limit/SuperMarioRunTA.jpg"
+            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
           />
         </Toolbar>
       </AppBar>
