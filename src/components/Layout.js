@@ -103,16 +103,32 @@ export default function Layout({ children }) {
         <Toolbar>
           <Typography
             className={classes.date}
-            style={{ flexGrow: "1" }} // set inline styles, because {classes.date} did not work
+            style={{ flexGrow: "1", fontSize: `${!matches ? "16px" : "14px"}` }} // set inline styles, because {classes.date} did not work
           >
-            Today is the {format(new Date(), "do MMMM Y")}{" "}
+            {!matches ? "Today is the" : ""} {format(new Date(), "do MMMM Y")}{" "}
             {/* format date by date-fns npm*/}
           </Typography>
-          <Typography>Thomas</Typography>
-          <Avatar
-            className={classes.avatar}
-            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
-          />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: `${!matches ? "row" : "column-reverse"}`,
+              justifyContent: "start",
+              alignItems: "center",
+              padding: "5px",
+            }}
+          >
+            <Typography
+              style={{
+                paddingLeft: `${!matches ? "0" : "15px"}`,
+              }}
+            >
+              User
+            </Typography>
+            <Avatar
+              className={classes.avatar}
+              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
+            />
+          </div>
         </Toolbar>
       </AppBar>
 
