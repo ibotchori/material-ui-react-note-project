@@ -10,24 +10,34 @@ import { useHistory, useLocation } from "react-router";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { format } from "date-fns"; // date formatter
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const drawerWidth = 240;
 
 // custom styles
 const useStyles = makeStyles((theme) => {
   return {
+    drawer: {
+      width: "240px",
+      [theme.breakpoints.down("md")]: {
+        width: "190px",
+      },
+    },
+    drawerPaper: {
+      width: "240px",
+      [theme.breakpoints.down("md")]: {
+        width: "190px",
+      },
+    },
+
     page: {
       background: "#f9f9f9",
       with: "100%",
       // padding: theme.spacing(3), // base spacing = 8 px. 8 * 3 = 24 px
-      padding: "24px", 
+      padding: "24px",
     },
-    drawer: {
-      width: drawerWidth,
-    },
-    drawerPaper: {
-      width: drawerWidth,
-    },
+
     root: {
       display: "flex",
     },
@@ -63,6 +73,9 @@ export default function Layout({ children }) {
   const history = useHistory();
   const location = useLocation();
 
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
+
   console.log(location.pathname);
 
   // menu buttons
@@ -85,7 +98,7 @@ export default function Layout({ children }) {
       <AppBar
         elevation="0"
         className={classes.appBar}
-        style={{ width: `calc(100% - ${drawerWidth}px)` }} // set inline styles, because {classes.appBar} did not work
+        style={{ width: `calc(100% - ${!matches ? 240 : 190}px)` }} // set inline styles, because {classes.appBar} did not work
       >
         <Toolbar>
           <Typography
